@@ -1,0 +1,14 @@
+	<h1>Events List</h1>
+	
+	<table>
+	    <% @events.each do |e| %>
+	        <tr>
+	            <td> <%= e.name %> </td>
+	            <td> <%= link_to "Show", controller:"events", action:"show", id:e %> </td>
+	            <td> <%= link_to "Edit", controller:"events", action:"edit", id:e %> </td>
+	            <td> <%= link_to "Delete", controller:"events", action:"destroy", id:e %> </td>
+	        </tr>
+	    <% end %>
+	</table>
+	
+	<%= link_to "Add New Event", controller:"events", action:"new" %>
