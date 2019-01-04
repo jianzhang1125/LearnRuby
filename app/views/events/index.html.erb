@@ -10,5 +10,7 @@
 	        </tr>
 	    <% end %>
 	</table>
-	
+    <%= paginate @events %>
 	<%= link_to "Add New Event", controller:"events", action:"new" %>
+
+
