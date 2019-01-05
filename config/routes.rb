@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :events
   resources :people
 
   get "/welcome/say_hello" => "welcome#say"
@@ -7,5 +8,5 @@ Rails.application.routes.draw do
 
   root "welcome#index"
 
-  match ':controller(/:action(/:id(.:format)))', :via => :all
+  # match ':controller(/:action(/:id(.:format)))', :via => :all
 end

@@ -4,13 +4,24 @@
 	    <% @events.each do |e| %>
 	        <tr>
 	            <td> <%= e.name %> </td>
+
+	            <!--This is the not RESTful
 	            <td> <%= link_to "Show", controller:"events", action:"show", id:e %> </td>
 	            <td> <%= link_to "Edit", controller:"events", action:"edit", id:e %> </td>
 	            <td> <%= link_to "Delete", controller:"events", action:"destroy", id:e %> </td>
+	            -->
+
+                <td> <%= link_to "Show", event_path(e) %> </td>
+                <td> <%= link_to "Edit", edit_event_path(e) %> </td>
+                <td> <%= link_to "Delete", event_path(e), :method => :delete %> </td>
 	        </tr>
 	    <% end %>
 	</table>
     <%= paginate @events %>
+
+	<!--This is the not RESTful
 	<%= link_to "Add New Event", controller:"events", action:"new" %>
+	-->
+	<%= link_to "Add New Event", new_event_path %>
 
 

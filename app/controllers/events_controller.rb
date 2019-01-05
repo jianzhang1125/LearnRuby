@@ -15,7 +15,7 @@ class EventsController < ApplicationController
         @events = Event.page( params[:page] ).per(5)
     end
 
-    # GET /events/show/:id
+    # GET /events/:id
     def show
         @page_title = @event.name
     end
@@ -26,7 +26,7 @@ class EventsController < ApplicationController
         @event = Event.new
     end
 
-    # POST /events/create
+    # POST /events
     def create
         @event = Event.new( event_params )
 
@@ -39,18 +39,18 @@ class EventsController < ApplicationController
             # Add a new flash message
             flash[:notice] = "Success to add new event!"
 
-            redirect_to :action => :index
+            redirect_to events_path
         else
             render :action => :new
         end
 
     end
 
-    # GET /events/edit/:id
+    # GET /events/:id/edit
     def edit
     end
 
-    # POST /events/update/:id
+    # PATCH /events/:id
     def update
         @event.update( event_params )
 
@@ -58,19 +58,19 @@ class EventsController < ApplicationController
             # Add a new flash message
             flash[:notice] = "Success to change event!"
 
-            redirect_to :action => :show, :id => @event
+            redirect_to event_path(@event)
         else
             render :action => :edit
         end
 
     end
 
-    # GET /events/destroy/:id
+    # DELETE /events/:id
     def destroy
         @event.destroy
         # Add a new flash message
         flash[:alert] = "The event is deleted."
-        redirect_to :action => :index
+        redirect_to events_path
     end
 
 
