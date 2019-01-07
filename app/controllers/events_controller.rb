@@ -14,6 +14,10 @@ class EventsController < ApplicationController
         # @events = Event.all
         @events = Event.page( params[:page] ).per(5)
 
+        Rails.logger.debug( "Index Page, events count:" + @events.count.to_s )
+        Rails.logger.debug( "event : #{@events.inspect}")
+
+
         respond_to do |format|
             # Read the default template, index.html.erb
             format.html
