@@ -13,11 +13,41 @@ class EventsController < ApplicationController
         # No longer get all the data
         # @events = Event.all
         @events = Event.page( params[:page] ).per(5)
+
+        respond_to do |format|
+            # Read the default template, index.html.erb
+            format.html
+
+            # Here, we use the @events object and transfer the data to xml format
+            format.xml {
+                render :xml => @events.to_xml
+            }
+
+            # Format the JSON
+            format.json {
+                render :json => @events.to_json
+            }
+
+            # This format will use the index.atom.builder template
+            format.atom {
+                @feed_title = "My event list"
+            }
+        end
     end
 
     # GET /events/:id
     def show
         @page_title = @event.name
+
+        respond_to do |format|
+            format.html {
+                @page_title = @event.name
+            }
+            format.xml
+            format.json {
+                render :json => {id:@event.id, name:@event.name, Created_Time:@event.created_at}.to_json
+            }
+        end
     end
 
     # GET /events/new

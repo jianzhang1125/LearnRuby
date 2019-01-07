@@ -12,6 +12,8 @@
 	            -->
 
                 <td> <%= link_to "Show", event_path(e) %> </td>
+                <td> <%= link_to "Get XML", event_path(e, :format => :xml) %> </td>
+                <td> <%= link_to "Get JSON", event_path(e, :format => :json) %> </td>
                 <td> <%= link_to "Edit", edit_event_path(e) %> </td>
                 <td> <%= link_to "Delete", event_path(e), :method => :delete %> </td>
 	        </tr>
