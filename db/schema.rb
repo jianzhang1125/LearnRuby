@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_02_182914) do
+ActiveRecord::Schema.define(version: 2019_01_09_182308) do
+
+  create_table "attendees", force: :cascade do |t|
+    t.string "name"
+    t.integer "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_attendees_on_event_id"
+  end
 
   create_table "events", force: :cascade do |t|
     t.string "name"
@@ -28,6 +36,33 @@ ActiveRecord::Schema.define(version: 2019_01_02_182914) do
     t.date "birthday"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "rcr_request_attachments", force: :cascade do |t|
+    t.integer "rcr_request_id"
+    t.string "name", null: false
+    t.string "path", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rcr_request_id"], name: "index_rcr_request_attachments_on_rcr_request_id"
+  end
+
+  create_table "rcr_requests", force: :cascade do |t|
+    t.string "request_type", null: false
+    t.text "public_key", null: false
+    t.string "account_number", null: false
+    t.string "status", null: false
+    t.string "owner_group"
+    t.datetime "created_at", null: false
+    t.string "created_by", null: false
+    t.datetime "updated_at", null: false
+    t.string "updated_by"
+    t.datetime "primary_approved_at"
+    t.string "primary_approved_by"
+    t.text "primary_approved_comment"
+    t.datetime "denied_at"
+    t.string "denied_by"
+    t.text "denied_comment"
   end
 
 end
