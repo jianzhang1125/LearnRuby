@@ -1,0 +1,2 @@
+module RcrRequestsHelper
+end

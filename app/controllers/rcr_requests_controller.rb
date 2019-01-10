@@ -1,0 +1,2 @@
+class RcrRequestsController < ApplicationController
+end

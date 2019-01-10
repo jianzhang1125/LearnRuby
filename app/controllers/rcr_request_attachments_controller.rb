@@ -1,0 +1,2 @@
+class RcrRequestAttachmentsController < ApplicationController
+end
