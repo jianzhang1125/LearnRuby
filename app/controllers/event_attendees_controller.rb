@@ -14,6 +14,19 @@ class EventAttendeesController < ApplicationController
     # @attendee = @event.attendees.new
   end
 
+  def create
+    @attendee = @event.attendees.build( attendee_params )
+    if @attendee.save
+      redirect_to event_attendees_path
+    else
+      render :action => "new"
+    end
+  end
+
+  def attendee_params
+    params.require(:attendee).permit(:name)
+  end
+
   def set_event
     @event = Event.find( params[:event_id] )
   end

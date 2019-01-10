@@ -1,0 +1,7 @@
+<%= form_for @attendee, :url => event_attendees_path(@event) do |f| %>
+    <div class="form-group">
+        <%=f.label :name,"Name"%>
+        <%=f.text_field :name, :class => "form-control" %>
+    </div>
+    <%= f.submit "Submit", :class => "btn btn-primary" %>
+<% end %>
