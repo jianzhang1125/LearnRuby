@@ -30,5 +30,5 @@ class EventAttendeesController < ApplicationController
   def set_event
     @event = Event.find( params[:event_id] )
   end
-  private :set_event
+  private :set_event, :attendee_params
 end
