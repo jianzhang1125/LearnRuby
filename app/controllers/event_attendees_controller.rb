@@ -23,6 +23,14 @@ class EventAttendeesController < ApplicationController
     end
   end
 
+  def destroy
+    @attendee = @event.attendees.find( params[:id] )
+    @attendee.destroy
+    # Add a new flash message
+    flash[:alert] = "The attendee is deleted."
+    redirect_to event_attendees_path
+  end
+
   def attendee_params
     params.require(:attendee).permit(:name)
   end

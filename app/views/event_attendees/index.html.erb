@@ -16,7 +16,7 @@
             <td> <%= a.name %> </td>
             <td> <%= a.event_id %> </td>
             <td> <%= link_to "Show", event_attendee_path(@event, a), :class => "btn btn-primary" %></td>
-            <td> <%= link_to "Index", event_attendees_path(@event, a), :class => "btn btn-primary" %></td>
+            <td> <%= link_to "Delete", event_attendee_path(@event, a), :data => {:confirm => "Are you sure?"},:method => :delete, :class => "btn btn-danger" %></td>
         </tr>
     <% end %>
 </table>
