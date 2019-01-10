@@ -42,6 +42,7 @@ class EventsController < ApplicationController
     # GET /events/:id
     def show
         @page_title = @event.name
+        @attendees = @event.attendees
 
         respond_to do |format|
             format.html {
