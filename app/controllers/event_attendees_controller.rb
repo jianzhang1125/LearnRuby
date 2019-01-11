@@ -23,6 +23,19 @@ class EventAttendeesController < ApplicationController
     end
   end
 
+  def edit
+    @attendee = @event.attendees.find( params[:id] )
+  end
+
+  def update
+    @attendee = @event.attendees.find( params[:id] )
+    if @attendee.update( attendee_params )
+      redirect_to event_attendees_path
+    else
+      render :action => "edit"
+    end
+  end
+
   def destroy
     @attendee = @event.attendees.find( params[:id] )
     @attendee.destroy
