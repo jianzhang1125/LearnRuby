@@ -1,22 +1,32 @@
 <%#= debug(@event) %>
 
-<h2><%= @event.name %></h2>
+<h2>Event Name: <%= @event.name %></h2>
+
+<% if @event.category.nil? %>
+    <h3>No category</h3>
+<% else %>
+    <h2>Category Name: <%= @event.category.name %></h2>
+<% end %>
+
+<h2>Category Name: <%= @event.category.try(:name) %></h2>
+
+<h2>Category Name: <%= @event.category_name %></h2>
 
 <h3>Description</h3>
 <%= @event.description %>
-
-
-<h3>Simple Format Description</h3>
+<h4>This is the formated version</h4>
 <%= simple_format @event.description %>
 
-
-<!--<p><%#= link_to "Back To Index", :controller => "events", :action => "index" %></p>-->
-
-<h3>Attendee List, Size <%= @attendees.size %></h3>
 <% if @attendees.any? %>
-<h3>Attendee List, Size <%= @attendees.size %></h3>
+    <h3>Attendee List, Size <%= @attendees.size %></h3>
+    <% @attendees.each do |a|%>
+        <li><%= a.name %></li>
+    <% end %>
 
+<% else %>
+    <h3>No attendees</h3>
 <% end %>
 
 
 <p><%= link_to "Back To Index", events_path %></p>
+<!--<p><%#= link_to "Back To Index", :controller => "events", :action => "index" %></p>-->
