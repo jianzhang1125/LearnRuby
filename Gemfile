@@ -20,7 +20,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'kaminari'
 
 # Use the bootstrap-sass to use the Bootstrap
-gem 'bootstrap-sass', '~> 3.4.0'
+gem 'bootstrap-sass', '~> 3.4.1'
 gem 'sassc-rails', '>= 2.0.0'
 gem 'jquery-rails'
 
